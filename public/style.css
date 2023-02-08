@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
 }
@@ -42,7 +42,7 @@ article {
   height: 22vw;
   color: white;
 
-  /* From https://css.glass */
+  From https://css.glass
   background: rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -53,4 +53,203 @@ article {
 
 h1 {
   text-align: center;
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  height: 101vh;
+  font-family: open system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  margin: 0;
+  background-color: #2e2c2c;
+}
+
+.animated-box {
+  width: 50vw;
+  height: 60vh;
+  max-width: 60em;
+  min-width: 20em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background: #fff;
+  box-shadow: 0 0 20px 20px rgba(0, 0, 0, .1);
+  border-radius: 5px;
+  position: relative;
+  transition: .25s;
+}
+
+h1 {
+  font-size: 40px;
+  margin: 1rem 0 3rem;
+  color: rgba(0, 0, 0);
+  text-align: center;
+}
+
+.card,
+.food,
+.information {
+  max-width: 1000px;
+  margin: auto;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  margin: 1rem;
+  text-align: center;
+}
+
+.food,
+.information {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+img {
+  width: 13em;
+  border-radius: 13em;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, .2);
+  position: absolute;
+  top: 3rem;
+}
+
+p {
+  color: black;
+  text-align: center;
+  margin-top: -40px;
+}
+
+article>p {
+  padding: 7rem 2rem;
+  margin-top: 0;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  border-radius: 0 0 1rem 1rem;
+  width: 100%;
+}
+
+.snow {
+  top: -5%;
+  border-radius: calc(var(--size) * 2);
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background-color: #fbfcfc;
+}
+
+.snow-anim {
+  animation: var(--time-drop) drop var(--delay) infinite linear, var(--time-swing) step var(--delay) ease-in-out infinite alternate-reverse;
+}
+
+@keyframes drop {
+  from {
+    top: -5%;
+  }
+
+  to {
+    top: 100%;
+  }
+}
+
+@keyframes step {
+  from {
+    transform: translateX(-12px);
+  }
+
+  to {
+    transform: translateX(12px);
+  }
+}
+
+.animated-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 4px;
+  background: linear-gradient(120deg, #00F260, #0575E6, #00F260);
+  background-size: 300% 300%;
+  clip-path: polygon(0% 100%, 4px 100%, 4px 4px, calc(100% - 4px) 4px, calc(100% - 4px) calc(100% - 4px), 4px calc(100% - 4px), 4px 100%, 100% 100%, 100% 0%, 0% 0%);
+}
+
+.animated-box.in:after {
+  animation: frame-enter 1s forwards ease-in-out reverse, gradient-animation 4s ease-in-out infinite;
+}
+
+/* motion */
+@keyframes gradient-animation {
+  0% {
+    background-position: 15% 0%;
+  }
+
+  50% {
+    background-position: 85% 100%;
+  }
+
+  100% {
+    background-position: 15% 0%;
+  }
+}
+
+@keyframes frame-enter {
+  0% {
+    clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), 3px calc(100% - 3px), 3px 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+
+  25% {
+    clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), calc(100% - 3px) calc(100% - 3px), calc(100% - 3px) 100%, 100% 100%, 100% 0%, 0% 0%);
+  }
+
+  50% {
+    clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, calc(100% - 3px) 3px, 100% 0%, 0% 0%);
+  }
+
+  75% {
+    -webkit-clip-path: polygon(0% 100%, 3px 100%, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 0%, 0% 0%);
+  }
+
+  100% {
+    -webkit-clip-path: polygon(0% 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 3px 100%, 0% 100%);
+  }
+}
+
+.myButton {
+  background-color: transparent;
+  border-radius: 15px;
+  border: 1px solid black;
+  display: inline-block;
+  cursor: pointer;
+  color: black;
+  font-family: open system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 10px 35px;
+  text-decoration: none;
+}
+
+.myButton:hover {
+  background-color: lightgrey;
+}
+
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
+
+#information-top {
+  position: absolute;
 }
